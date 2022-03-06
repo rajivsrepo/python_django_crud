@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+    <a href="{% url 'student_new' %}">Create new Student</a>
+    <table>
+      <thead>
+        <th>IdentityNo</th>
+        <th>Name</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        {% for student in object_list %}
+        <tr>
+          <td>{{ student.identityNumber }}</td>
+          <td>{{ student.name }}</td>
+          <td>
+            <a href="{% url 'student_detail' student.id %}">Detail</a>
+            <a href="{% url 'student_edit' student.id %}">Edit</a>
+            <a href="{% url 'student_delete' student.id %}">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">
+          Data is empty! Add students first.
+        </td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

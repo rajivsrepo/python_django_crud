@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+  </head>
+  <body>
+    <h1>Student Delete Confirmation</h1>
+    <form method="POST"> {% csrf_token %}
+      Are you sure you want to delete {{ object }} ?
+      <input type="submit" value="confirm" />
+    </form>
+    <button type="submit" onclick="javascript:history.back()">Cancel</button>
